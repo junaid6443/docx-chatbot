@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/d91e0fdc-bff9-43b6-9761-740d20287451/resourceGroups/appsvc_linux_eastus/providers/Microsoft.Web/sites/ocm-poc-centralus-web-kapa",
+    "appService.deploySubpath": "."
+}

@@ -1,0 +1,73 @@
+<!-- <div class="chat-container">
+    <div class="messages">
+      <div *ngFor="let msg of messages" [ngClass]="{'user-msg': msg.sender === 'user', 'bot-msg': msg.sender === 'bot'}">
+        <div class="message-bubble">
+          <div *ngIf="msg.text" [innerHTML]="msg.text"></div>
+          <ng-container *ngIf="msg.image_url">
+            <img [src]="msg.image_url" alt="Bot image response" class="chat-image" />
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  
+    <form (ngSubmit)="sendMessage()" class="input-container">
+      <input type="text" [(ngModel)]="query" name="query" class="chat-input" placeholder="Ask your question..." required />
+      <button type="submit" class="send-button">Send</button>
+    </form>
+  </div>
+   -->
+
+
+
+   <div class="chat-container">
+
+    <!-- Header Section -->
+    <div class="chat-header">
+      <img src="assets/logo.png" alt="Logo" class="chat-logo" />
+      <h1 class="chat-title">OCM Enabler</h1>
+    </div>
+  
+    <!-- Spinner while loading -->
+    <div *ngIf="isLoading" class="spinner-container">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  
+    <!-- Messages -->
+    <div class="messages">
+      <div *ngFor="let msg of messages" [ngClass]="{'user-msg': msg.sender === 'user', 'bot-msg': msg.sender === 'bot'}">
+        <div class="message-bubble">
+          <div *ngIf="msg.text" [innerHTML]="msg.text"></div>
+          <ng-container *ngIf="msg.image_url">
+            <img 
+              [src]="msg.image_url" 
+              alt="Bot image response" 
+              class="chat-image" 
+              (click)="openImageModal(msg.image_url)" 
+            />
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Input -->
+    <form (ngSubmit)="sendMessage()" class="input-container">
+      <input 
+        type="text" 
+        [(ngModel)]="query" 
+        name="query" 
+        class="chat-input" 
+        placeholder="Ask your question..." 
+        required 
+      />
+      <button type="submit" class="send-button">Send</button>
+    </form>
+  
+    <!-- Image Modal -->
+    <div class="modal" *ngIf="selectedImage" (click)="closeImageModal()">
+      <span class="close">&times;</span>
+      <img [src]="selectedImage" class="modal-content" />
+    </div>
+  
+  </div>
+  
+  
